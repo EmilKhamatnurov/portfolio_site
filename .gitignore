@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Compiled config artifacts
+vite.config.js
+vite.config.d.ts
+
+# Env & secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+
+# Vite cache
+.vite
+
+.claude

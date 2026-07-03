@@ -1,0 +1,51 @@
+// ── Дизайн-токены: палитра «приборной панели» + типографика ──
+
+// Цвет
+$hangar:      #0B1117; // фон-«ангар»
+$hangar-2:    #0E1620; // фон секции
+$panel:       #15212E; // поверхность панели
+$panel-2:     #1A2A39; // поднятая поверхность
+$line:        #25394B; // hairline-границы
+$line-soft:   #1d2c3b;
+
+$cyan:        #48D6E8; // основной «приборный» акцент
+$cyan-deep:   #1f8d9c;
+$amber:       #F4A23B; // сигнальный акцент (редко)
+$mint:        #6FE3B4; // статус «online»
+
+$text:        #E7EEF4; // основной текст
+$text-mid:    #B4C2CF;
+$muted:       #8093A2; // приглушённый
+$muted-2:     #5C6E7C;
+
+// Типографика
+$display: 'Unbounded', system-ui, sans-serif;     // только крупные акценты
+$body:    'Golos Text', system-ui, sans-serif;    // основной текст
+$mono:    'JetBrains Mono', ui-monospace, monospace; // данные и метки
+
+// Геометрия
+$radius:    14px;
+$radius-sm: 9px;
+$maxw:      1180px;
+
+@mixin grid-bg {
+  background-image:
+    linear-gradient(rgba(72, 214, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72, 214, 232, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@mixin eyebrow {
+  font-family: $mono;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $cyan;
+}
+
+@mixin panel {
+  background: linear-gradient(180deg, rgba(26, 42, 57, 0.55), rgba(21, 33, 46, 0.85));
+  border: 1px solid $line;
+  border-radius: $radius;
+}

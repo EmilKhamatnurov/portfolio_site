@@ -1,0 +1,539 @@
+@use './styles/tokens' as *;
+
+.section {
+  padding: 110px 28px;
+  position: relative;
+}
+.section:nth-of-type(even) {
+  background: $hangar-2;
+  border-top: 1px solid $line-soft;
+  border-bottom: 1px solid $line-soft;
+}
+
+.wrap {
+  max-width: $maxw;
+  margin: 0 auto;
+}
+
+// ── Заголовок секции ──
+.head {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 56px;
+}
+.headIndex {
+  font-family: $mono;
+  font-size: 13px;
+  color: $cyan;
+  letter-spacing: 0.1em;
+}
+.headTitle {
+  font-family: $display;
+  font-weight: 600;
+  font-size: clamp(26px, 3.6vw, 42px);
+  letter-spacing: -0.02em;
+  color: $text;
+}
+.headNote {
+  @include eyebrow;
+  color: $muted;
+  align-self: center;
+  justify-self: start;
+}
+.headLine {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: linear-gradient(90deg, $line, transparent);
+  margin-top: 4px;
+}
+
+// ── Радиальные приборы ──
+.gauges {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+  padding: 36px 28px;
+  @include panel;
+  margin-bottom: 26px;
+}
+
+// ── Панели стека ──
+.stackGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.stackPanel {
+  @include panel;
+  padding: 22px;
+  grid-column: span 4;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.stackPanel:hover {
+  border-color: $cyan-deep;
+  transform: translateY(-3px);
+}
+.stackPanel:nth-child(2) {
+  grid-column: span 8;
+}
+.stackPanel:nth-child(5) {
+  grid-column: span 8;
+}
+.stackPanelHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid $line-soft;
+}
+.stackPanelTitle {
+  font-family: $mono;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $text-mid;
+}
+.stackCount {
+  font-family: $mono;
+  font-size: 12px;
+  color: $cyan;
+}
+.chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    font-family: $mono;
+    font-size: 12.5px;
+    color: $text-mid;
+    padding: 6px 12px;
+    border: 1px solid $line;
+    border-radius: 100px;
+    background: rgba(11, 17, 23, 0.4);
+    transition: border-color 0.25s, color 0.25s, background 0.25s;
+  }
+  li:hover {
+    border-color: $cyan;
+    color: $cyan;
+    background: rgba(72, 214, 232, 0.06);
+  }
+}
+
+// ── Таймлайн опыта ──
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.job {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 20px;
+}
+.jobRail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+.node {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid $line;
+  background: $hangar;
+  flex: none;
+}
+.nodeActive {
+  border-color: $mint;
+  background: $mint;
+  box-shadow: 0 0 0 4px rgba(111, 227, 180, 0.16);
+}
+.jobRail::after {
+  content: '';
+  width: 2px;
+  flex: 1;
+  margin-top: 8px;
+  background: linear-gradient(180deg, $line, transparent);
+}
+.job:last-child .jobRail::after {
+  display: none;
+}
+
+.jobBody {
+  @include panel;
+  padding: 26px 28px;
+  margin-bottom: 18px;
+}
+.jobTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.jobCompany {
+  font-family: $display;
+  font-weight: 600;
+  font-size: 22px;
+  color: $text;
+}
+.jobPeriod {
+  font-family: $mono;
+  font-size: 12.5px;
+  color: $muted;
+  white-space: nowrap;
+}
+.jobRole {
+  margin-top: 6px;
+  color: $cyan;
+  font-size: 14px;
+  font-family: $mono;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.badge {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: $mint;
+  border: 1px solid rgba(111, 227, 180, 0.4);
+  padding: 2px 9px;
+  border-radius: 100px;
+}
+.jobProduct {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 2px solid $cyan-deep;
+  background: rgba(11, 17, 23, 0.4);
+  border-radius: 0 $radius-sm $radius-sm 0;
+  color: $text-mid;
+  font-size: 14.5px;
+}
+.jobList {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 11px;
+
+  li {
+    position: relative;
+    padding-left: 22px;
+    color: $text-mid;
+    font-size: 14.5px;
+  }
+  li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border: 1.5px solid $cyan;
+    border-radius: 2px;
+    transform: rotate(45deg);
+  }
+}
+
+// ── Возможности ──
+.capGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.cap {
+  @include panel;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.cap::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: $cyan;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.35s;
+}
+.cap:hover {
+  transform: translateY(-4px);
+  border-color: $cyan-deep;
+}
+.cap:hover::after {
+  transform: scaleY(1);
+}
+.capTag {
+  font-family: $mono;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $amber;
+}
+.capTitle {
+  margin-top: 14px;
+  font-size: 20px;
+  font-weight: 600;
+  color: $text;
+}
+.capDesc {
+  margin-top: 10px;
+  color: $muted;
+  font-size: 14.5px;
+}
+
+// ── Проекты + подход ──
+.projects {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 16px;
+}
+.project {
+  @include panel;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  background: linear-gradient(150deg, rgba(72, 214, 232, 0.07), rgba(21, 33, 46, 0.85));
+}
+.projectLabel {
+  @include eyebrow;
+  color: $cyan;
+}
+.projectTitle {
+  margin-top: 12px;
+  font-family: $display;
+  font-weight: 600;
+  font-size: 26px;
+  color: $text;
+}
+.projectDesc {
+  margin-top: 10px;
+  color: $text-mid;
+  font-size: 14.5px;
+}
+.projectNote {
+  margin-top: 10px;
+  font-family: $mono;
+  font-size: 12px;
+  color: $muted;
+}
+.projectStack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    font-family: $mono;
+    font-size: 12px;
+    color: $cyan;
+    border: 1px solid $line;
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+}
+.about {
+  @include panel;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+}
+.aboutLabel {
+  @include eyebrow;
+  color: $amber;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin-right: 22px;
+  align-self: stretch;
+  border-right: 1px solid $line-soft;
+  padding-right: 4px;
+}
+.aboutText {
+  color: $text-mid;
+  font-size: 15px;
+}
+
+// ── Образование ──
+.eduGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.edu {
+  @include panel;
+  padding: 24px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.edu:hover {
+  transform: translateY(-3px);
+  border-color: $cyan-deep;
+}
+.eduPeriod {
+  font-family: $mono;
+  font-size: 12px;
+  color: $cyan;
+}
+.eduTitle {
+  margin-top: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: $text;
+}
+.eduPlace {
+  margin-top: 8px;
+  color: $muted;
+  font-size: 14px;
+}
+
+// ── Контакты ──
+.contactSection {
+  padding-bottom: 0;
+}
+.contact {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.contactEyebrow {
+  @include eyebrow;
+  margin-bottom: 22px;
+}
+.contactTitle {
+  font-family: $display;
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: $text;
+}
+.contactRows {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contactRow {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  padding: 22px 26px;
+  @include panel;
+  transition: border-color 0.3s, transform 0.3s, background 0.3s;
+}
+.contactRow:hover {
+  border-color: $cyan;
+  transform: translateY(-2px);
+  background: rgba(72, 214, 232, 0.05);
+}
+.contactKey {
+  font-family: $mono;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $muted;
+}
+.contactVal {
+  font-size: 17px;
+  color: $text;
+}
+.arrow {
+  font-family: $mono;
+  color: $cyan;
+  font-size: 18px;
+}
+
+.footer {
+  max-width: $maxw;
+  margin: 90px auto 0;
+  padding: 26px 0 34px;
+  border-top: 1px solid $line-soft;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: $muted;
+  font-size: 13px;
+}
+.footMono {
+  font-family: $mono;
+  font-size: 11.5px;
+  color: $muted-2;
+  letter-spacing: 0.04em;
+}
+
+// ── Адаптив ──
+@media (max-width: 980px) {
+  .gauges {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 32px;
+  }
+  .stackPanel,
+  .stackPanel:nth-child(2),
+  .stackPanel:nth-child(5) {
+    grid-column: span 6;
+  }
+  .capGrid {
+    grid-template-columns: 1fr;
+  }
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .eduGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .section {
+    padding: 76px 18px;
+  }
+  .gauges {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 28px 18px;
+  }
+  .stackGrid {
+    grid-template-columns: 1fr;
+  }
+  .stackPanel,
+  .stackPanel:nth-child(2),
+  .stackPanel:nth-child(5) {
+    grid-column: span 1;
+  }
+  .eduGrid {
+    grid-template-columns: 1fr;
+  }
+  .job {
+    grid-template-columns: 20px 1fr;
+    gap: 14px;
+  }
+  .jobBody {
+    padding: 22px 18px;
+  }
+  .aboutLabel {
+    display: none;
+  }
+  .contactRow {
+    grid-template-columns: 1fr auto;
+  }
+  .contactKey {
+    grid-column: 1 / -1;
+  }
+}

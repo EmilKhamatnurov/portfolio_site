@@ -1,0 +1,49 @@
+@use '../styles/tokens' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.svg {
+  width: 116px;
+  height: 116px;
+}
+
+.track {
+  fill: none;
+  stroke: $line;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+.value {
+  fill: none;
+  stroke: url(#g);
+  stroke: $cyan;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 0 6px rgba(72, 214, 232, 0.45));
+}
+
+.pct {
+  font-family: $display;
+  font-weight: 600;
+  font-size: 26px;
+  fill: $text;
+}
+.unit {
+  font-family: $mono;
+  font-size: 11px;
+  fill: $cyan;
+}
+
+.name {
+  font-family: $mono;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  color: $text-mid;
+  text-align: center;
+}

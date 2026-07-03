@@ -1,0 +1,404 @@
+@use '../styles/tokens' as *;
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 92px 28px 56px;
+  position: relative;
+  @include grid-bg;
+}
+
+.frame {
+  width: 100%;
+  max-width: $maxw;
+  margin: 0 auto;
+}
+
+.statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $mono;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $muted;
+  padding-bottom: 18px;
+  margin-bottom: 38px;
+  border-bottom: 1px solid $line-soft;
+  animation: fade 0.6s both;
+}
+.sys {
+  color: $muted-2;
+}
+.online {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: $mint;
+}
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $mint;
+  box-shadow: 0 0 0 0 rgba(111, 227, 180, 0.6);
+  animation: pulse 2.4s infinite;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.eyebrow {
+  @include eyebrow;
+  margin-bottom: 22px;
+  animation: rise 0.6s both 0.05s;
+}
+
+.name {
+  font-family: $display;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-size: clamp(44px, 7vw, 96px);
+  display: flex;
+  flex-direction: column;
+}
+.line1 {
+  color: $text;
+  animation: rise 0.7s both 0.12s;
+}
+.line2 {
+  color: transparent;
+  -webkit-text-stroke: 1.4px $cyan;
+  animation: rise 0.7s both 0.22s;
+}
+
+.stack {
+  margin-top: 18px;
+  font-family: $mono;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: $cyan;
+  animation: rise 0.7s both 0.32s;
+}
+
+.summary {
+  margin-top: 22px;
+  max-width: 540px;
+  color: $text-mid;
+  font-size: 16px;
+  animation: rise 0.7s both 0.4s;
+}
+
+.coords {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: $mono;
+  font-size: 13px;
+  color: $muted;
+  animation: rise 0.7s both 0.48s;
+}
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: $line;
+}
+
+.actions {
+  margin-top: 34px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: rise 0.7s both 0.56s;
+}
+.btnPrimary,
+.btnGhost {
+  font-family: $mono;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 13px 26px;
+  border-radius: 100px;
+  transition: transform 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
+}
+.btnPrimary {
+  background: $cyan;
+  color: $hangar;
+  font-weight: 700;
+  border: 1px solid $cyan;
+}
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -12px rgba(72, 214, 232, 0.7);
+}
+.btnGhost {
+  border: 1px solid $line;
+  color: $text-mid;
+}
+.btnGhost:hover {
+  border-color: $cyan;
+  color: $cyan;
+  transform: translateY(-2px);
+}
+
+// ── Правая колонка: портрет + приборы ──
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// ── Портрет: модуль идентификации ──
+.portrait {
+  @include panel;
+  margin: 0;
+  padding: 12px;
+  overflow: hidden;
+  animation: rise 0.7s both 0.24s;
+}
+.portraitHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $mono;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $muted-2;
+  padding: 2px 4px 10px;
+}
+.portraitTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: $amber;
+}
+.recLed {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $amber;
+  animation: pulse 2.4s infinite;
+}
+.portraitMedia {
+  position: relative;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  background: $hangar-2;
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 18%;
+    // filter: grayscale(0.18) contrast(1.04) brightness(0.96);
+    transition: filter 0.5s;
+  }
+}
+// .portrait:hover .portraitMedia img {
+//   filter: grayscale(0) contrast(1.02) brightness(1);
+// }
+// сканлайн поверх портрета
+.scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  // background:
+  //   linear-gradient(180deg, rgba(72, 214, 232, 0.1), transparent 22%),
+  //   repeating-linear-gradient(
+  //     180deg,
+  //     transparent 0 3px,
+  //     rgba(11, 17, 23, 0.16) 3px 4px
+  //   );
+  // mix-blend-mode: soft-light;
+}
+// уголки-кронштейны
+.bracket {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid $cyan;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.bracketTL {
+  top: 8px;
+  left: 8px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.bracketTR {
+  top: 8px;
+  right: 8px;
+  border-left: 0;
+  border-bottom: 0;
+}
+.bracketBL {
+  bottom: 8px;
+  left: 8px;
+  border-right: 0;
+  border-top: 0;
+}
+.bracketBR {
+  bottom: 8px;
+  right: 8px;
+  border-left: 0;
+  border-top: 0;
+}
+.portraitFoot {
+  font-family: $mono;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: $text-mid;
+  padding: 10px 4px 2px;
+}
+
+// ── Кластер приборов ──
+.cluster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.gauge {
+  @include panel;
+  padding: 20px 20px 22px;
+  position: relative;
+  overflow: hidden;
+  animation: rise 0.7s both var(--d);
+}
+.gauge::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $amber;
+  opacity: 0.85;
+}
+.gaugeHead {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.gaugeNum {
+  font-family: $display;
+  font-weight: 600;
+  font-size: 34px;
+  color: $text;
+  letter-spacing: -0.02em;
+}
+.gaugeUnit {
+  font-family: $mono;
+  font-size: 12px;
+  color: $cyan;
+}
+.gaugeLabel {
+  margin-top: 6px;
+  font-size: 13px;
+  color: $muted;
+}
+.gaugeBar {
+  margin-top: 16px;
+  height: 4px;
+  border-radius: 4px;
+  background: $line-soft;
+  overflow: hidden;
+}
+.gaugeBar i {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  background: linear-gradient(90deg, $cyan-deep, $cyan);
+  border-radius: 4px;
+  transform-origin: left;
+  animation: sweep 1s ease both 0.7s;
+}
+
+.scroll {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: $mono;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $muted-2;
+  animation: fade 0.8s both 0.9s;
+}
+.scrollLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, $line, transparent);
+  max-width: 220px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sweep {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(111, 227, 180, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(111, 227, 180, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(111, 227, 180, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .summary {
+    max-width: none;
+  }
+}
+@media (max-width: 520px) {
+  .hero {
+    padding: 84px 18px 44px;
+  }
+  .cluster {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gaugeNum {
+    font-size: 28px;
+  }
+}
