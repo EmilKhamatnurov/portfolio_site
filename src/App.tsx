@@ -7,6 +7,7 @@ import {
   experience,
   capabilities,
   projects,
+  portfolio,
   education,
 } from './data/resume'
 import s from './App.module.scss'
@@ -127,10 +128,44 @@ export default function App() {
           </div>
         </section>
 
-        {/* ── 04 · ОБУЧЕНИЕ ── */}
+        {/* ── 04 · ПОРТФОЛИО ── */}
+        <section className={s.section} id="portfolio">
+          <div className={s.wrap}>
+            <SectionHead index="04" title="Портфолио" note="Живые работы" />
+
+            <div className={s.portfolio}>
+              {portfolio.map((p) => (
+                <a
+                  className={`${s.work} reveal`}
+                  key={p.url}
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className={s.workHead}>
+                    <span className={s.workKind}>{p.kind}</span>
+                    <span className={s.workTag}>{p.tag}</span>
+                  </div>
+                  <h3 className={s.workTitle}>{p.title}</h3>
+                  <p className={s.workDesc}>{p.desc}</p>
+                  <ul className={s.workStack}>
+                    {p.stack.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                  <span className={s.workLink}>
+                    Открыть <i className={s.workArrow}>↗</i>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 05 · ОБУЧЕНИЕ ── */}
         <section className={s.section} id="education">
           <div className={s.wrap}>
-            <SectionHead index="04" title="Образование и курсы" />
+            <SectionHead index="05" title="Образование и курсы" />
             <div className={s.eduGrid}>
               {education.map((e) => (
                 <article className={`${s.edu} reveal`} key={e.title + e.place}>
@@ -143,11 +178,11 @@ export default function App() {
           </div>
         </section>
 
-        {/* ── 05 · СВЯЗЬ ── */}
+        {/* ── 06 · СВЯЗЬ ── */}
         <section className={`${s.section} ${s.contactSection}`} id="contact">
           <div className={s.wrap}>
             <div className={`${s.contact} reveal`}>
-              <p className={s.contactEyebrow}>05 · Связь</p>
+              <p className={s.contactEyebrow}>06 · Связь</p>
               <h2 className={s.contactTitle}>
                 Готов к работе в офисе или удалённо
               </h2>

@@ -6,8 +6,9 @@ const items = [
   { id: 'stack', label: '01 · Стек' },
   { id: 'experience', label: '02 · Опыт' },
   { id: 'capabilities', label: '03 · Возможности' },
-  { id: 'education', label: '04 · Обучение' },
-  { id: 'contact', label: '05 · Связь' },
+  { id: 'portfolio', label: '04 · Портфолио' },
+  { id: 'education', label: '05 · Обучение' },
+  { id: 'contact', label: '06 · Связь' },
 ]
 
 export default function SideNav() {

@@ -2,7 +2,7 @@
 
 export const profile = {
   name: 'Хаматнуров Эмиль',
-  role: 'Frontend-разработчик',
+  role: 'Frontend-разработчик и веб-дизайнер',
   stack: 'React · TypeScript',
   level: 'Middle',
   location: 'Уфа',
@@ -70,8 +70,25 @@ export const stackGroups: { id: string; title: string; items: string[] }[] = [
   },
   {
     id: 'design',
-    title: 'Дизайн',
-    items: ['Figma', 'Pixso', 'Проектирование интерфейсов', 'Дизайн-системы', 'Прототипирование'],
+    title: 'UX/UI-дизайн',
+    items: [
+      'Figma',
+      'Pixso',
+      'UX-исследования',
+      'User Flow',
+      'Wireframes',
+      'Прототипирование',
+      'Проектирование интерфейсов',
+      'Дизайн-системы',
+      'UI-киты',
+      'Auto Layout',
+      'Компоненты и варианты',
+      'Типографика',
+      'Работа с цветом и сеткой',
+      'Адаптивный дизайн',
+      'Дизайн-токены',
+      'Accessibility (a11y)',
+    ],
   },
   {
     id: 'base',
@@ -150,6 +167,41 @@ export const projects: { title: string; desc: string; stack: string[]; note: str
     desc: 'Pet-проект на React с активным использованием AI-инструментов в разработке.',
     stack: ['React', 'TypeScript', 'AI-tools'],
     note: 'Репозиторий — запуск в ближайшее время',
+  },
+]
+
+// Портфолио — живые работы со ссылками
+export const portfolio: {
+  title: string
+  desc: string
+  url: string
+  tag: string
+  kind: string
+  stack: string[]
+}[] = [
+  {
+    title: 'Nothing Ear — лендинг',
+    desc: 'Промо-страница беспроводных наушников с активным шумоподавлением. Минималистичный чёрно-белый дизайн, адаптивная вёрстка и акцент на продукте.',
+    url: 'https://emilkhamatnurov.github.io/Nothing_Ear_Landing/',
+    tag: 'Landing',
+    kind: 'Сайт',
+    stack: ['HTML5', 'SCSS', 'JavaScript'],
+  },
+  {
+    title: 'Метрика — студия интерьера',
+    desc: 'Лендинг студии дизайна интерьера: проекты, услуги, отзывы и контакты. Аккуратная типографика и понятная навигация.',
+    url: 'https://emilkhamatnurov.github.io/Metrika/',
+    tag: 'Landing',
+    kind: 'Сайт',
+    stack: ['HTML5', 'SCSS', 'JavaScript'],
+  },
+  {
+    title: 'Yandex Pet Day',
+    desc: 'UX/UI-макет по техническому заданию от Яндекса. Проектирование интерфейса и визуального стиля в Figma.',
+    url: 'https://www.figma.com/design/0lS0TxyX2WuZDngO0Rmmrh/Yandex-Pet-Day.-%D0%A2%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BE%D1%82-%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%B0.?node-id=8-2&p=f',
+    tag: 'UX/UI',
+    kind: 'Figma',
+    stack: ['Figma', 'UX/UI', 'Прототип'],
   },
 ]
 

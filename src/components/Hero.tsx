@@ -52,7 +52,16 @@ export default function Hero() {
                 </span>
               </div>
               <div className={s.portraitMedia}>
-                <img src="/IMG_2716.JPG" alt={`${profile.name} — портрет`} loading="eager" />
+                <img
+                  src="/portrait.jpg"
+                  alt={`${profile.name} — портрет`}
+                  width={900}
+                  height={1350}
+                  loading="eager"
+                  // @ts-expect-error fetchpriority is a valid HTML attribute
+                  fetchpriority="high"
+                  decoding="async"
+                />
                 <i className={s.scan} />
                 <i className={`${s.bracket} ${s.bracketTL}`} />
                 <i className={`${s.bracket} ${s.bracketTR}`} />
