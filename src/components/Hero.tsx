@@ -53,7 +53,7 @@ export default function Hero() {
               </div>
               <div className={s.portraitMedia}>
                 <img
-                  src="/portrait.jpg"
+                  src={`${import.meta.env.BASE_URL}portrait.jpg`}
                   alt={`${profile.name} — портрет`}
                   width={900}
                   height={1350}
